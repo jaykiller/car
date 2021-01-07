@@ -8,12 +8,14 @@ import org.junit.Test;
 
 public class DriverLessCarTest {
 
-    private Car car = new DriverLessCar();
+    private final Car car = new DriverLessCar();
 
     @Test
     public void moveByRun() {
-
         car.move(ActionEnum.RUN.getCommand());
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 2
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.NORTH.getName());
         System.out.println(car);
     }
 
@@ -22,18 +24,27 @@ public class DriverLessCarTest {
         for (int i = 0; i < 2; i++) {
             car.move(ActionEnum.RUN.getCommand());
         }
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 3
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.NORTH.getName());
         System.out.println(car);
     }
 
     @Test
     public void moveByClockwiseRotation() {
         car.move(ActionEnum.CLOCKWISE_ROTATION.getCommand());
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 1
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.EAST.getName());
         System.out.println(car);
     }
 
     @Test
     public void moveByCounterClockwiseRotation() {
         car.move(ActionEnum.COUNTER_CLOCKWISE_ROTATION.getCommand());
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 1
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.WEST.getName());
         System.out.println(car);
     }
 
@@ -43,6 +54,9 @@ public class DriverLessCarTest {
     @Test
     public void testByScene1() {
         car.move(ActionEnum.CLOCKWISE_ROTATION.getCommand());
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 1
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.EAST.getName());
         System.out.println(car);
     }
 
@@ -52,6 +66,9 @@ public class DriverLessCarTest {
     @Test
     public void testByScene2() {
         car.move(ActionEnum.RUN.getCommand());
+        assert car.getPositionX() == 1
+                && car.getPositionY() == 2
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.NORTH.getName());
         System.out.println(car);
     }
 
@@ -62,6 +79,9 @@ public class DriverLessCarTest {
     public void testByScene3() {
         Car car = new DriverLessCar(OrientationEnum.EAST, 1, 1);
         car.move(ActionEnum.RUN.getCommand());
+        assert car.getPositionX() == 2
+                && car.getPositionY() == 1
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.EAST.getName());
         System.out.println(car);
     }
 
@@ -85,6 +105,9 @@ public class DriverLessCarTest {
         for (int i = 0; i < 2; i++) {
             car.move(ActionEnum.RUN.getCommand());
         }
+        assert car.getPositionX() == 3
+                && car.getPositionY() == 1
+                && car.getOrientation().equalsIgnoreCase(OrientationEnum.EAST.getName());
         System.out.println(car);
     }
 }
